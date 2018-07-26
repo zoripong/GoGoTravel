@@ -6,11 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
+
 </head>
 <body>
 	<jsp:forward page="template.jsp">	
-		<jsp:param name="HEADERTYPE" value="/include/html/header_type_02.jsp" />
-		<jsp:param name="CONTENTPAGE" value="mainProc.jsp" />
+		<jsp:param name="HEADERTYPE" value="/include/html/header_type_01.jsp" />
+		<jsp:param name="CONTENTPAGE" value="writeTravelProc.jsp" />
 	</jsp:forward>	
 </body>
 </html>

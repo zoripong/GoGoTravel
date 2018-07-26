@@ -10,14 +10,18 @@
 	
 	DBExecutor db = new DBExecutor(DBConnector.getMySqlConnection());
 	
-	ResultSet rs = db.execToSet("SELECT COUNT(*) FROM user WHERE user_id = '"+id+"' and password = '"+password+"' ;");
+	ResultSet rs = db.execToSet("SELECT * FROM user WHERE user_id = '"+id+"' and password = '"+password+"' ;");
 	 int rowCnt = 0;
-     
-	if(rs.next()) rowCnt = rs.getInt(1);
+	 if (rs.last()) {
+		 rowCnt = rs.getRow();
+	 }
+	
+	 System.out.println("row : "+rowCnt);
 	
 	if(rowCnt == 1){
 		System.out.println("로그인 성공");
 		session.setAttribute("id", id);
+		session.setAttribute("level", rs.getInt("level"));
 		%>
 		<jsp:forward page="main.jsp"/>
 		<%

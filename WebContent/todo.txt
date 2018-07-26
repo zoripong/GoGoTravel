@@ -1,0 +1,5 @@
+- main.jsp 검색기능
+- travel detail view
+- write about travel view
+- user page
+- wish travel

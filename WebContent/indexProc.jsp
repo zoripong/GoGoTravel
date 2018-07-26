@@ -1,8 +1,8 @@
-<%@page import="java.sql.SQLException"%>
-<%@page import="java.sql.DriverManager"%>
+
+<%@page import="java.sql.Timestamp"%>
 <%@page import="DB.DBConnector"%>
 <%@page import="java.sql.Connection"%>
-<%@page import="java.io.File"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
@@ -18,5 +18,8 @@
 	 Connection conn = DBConnector.getMySqlConnection();
 	 out.println("DB연결 정보!!!!!!!!!? : "+conn);
  
- 	
+	 Timestamp ts=new Timestamp(System.currentTimeMillis());
+	 System.out.println("TimeStamp:"+ ts);
+	 System.out.println("currentTimeMillis:"+ System.currentTimeMillis());
+	 
  %>

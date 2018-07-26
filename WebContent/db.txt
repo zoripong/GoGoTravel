@@ -29,6 +29,7 @@ CREATE TABLE travel(
   travel_id INT(10) NOT NULL auto_increment,
   user_id VARCHAR(32) NOT NULL,
   title VARCHAR(50) NOT NULL,
+  board_time VARCHAR(50) NOT NULL,
   start_date DATE NOT NULL,
   end_date DATE NOT NULL,
   budget INT(10) NOT NULL,
@@ -37,13 +38,14 @@ CREATE TABLE travel(
   FOREIGN KEY (user_id) REFERENCES user(user_id)
 )DEFAULT CHARSET=utf8;
 
-# travel_loc
-CREATE TABLE travel_loc(
+# travel_tag
+CREATE TABLE travel_tag(
   travel_id INT(10),
-  loc VARCHAR(50) NOT NULL,
-  PRIMARY KEY (travel_id, loc),
+  tag VARCHAR(50) NOT NULL,
+  PRIMARY KEY (travel_id, tag),
   FOREIGN KEY (travel_id) REFERENCES travel(travel_id)
 )DEFAULT CHARSET=utf8;
+
 
 # wish
 CREATE TABLE wish_travel(
@@ -67,11 +69,13 @@ CREATE TABLE route(
 
 # route_detail
 CREATE TABLE route_detail(
+  travel_id INT(10),
   route_id INT(10),
   detail_index INT(10) NOT NULL,
   img_src VARCHAR(50),
   content VARCHAR(200),
-  PRIMARY KEY (route_id, detail_index),
+  PRIMARY KEY (travel_id, route_id, detail_index),
+  FOREIGN KEY (travel_id) REFERENCES travel(travel_id),
   FOREIGN KEY (route_id) REFERENCES route(route_id)
 )DEFAULT CHARSET=utf8;
 
@@ -81,7 +85,7 @@ CREATE TABLE comment(
   user_id VARCHAR(32),
   travel_id INT(10),
   content VARCHAR(200) NOT NULL,
-  time DATE NOT NULL,
+  time VARCHAR(32) NOT NULL,
   PRIMARY KEY (comment_id),
   FOREIGN KEY (travel_id) REFERENCES travel(travel_id),
   FOREIGN KEY (user_id) REFERENCES user(user_id)
@@ -89,6 +93,60 @@ CREATE TABLE comment(
 
 
 # insert
-# user table
+# 회원가입
 INSERT INTO user VALUES ('user_id', 'password', 'loc', level);
+
+# 글 작성
+# 1번째 글
+INSERT INTO travel VALUES (null, 'test001', '떠나요, 제주도', '1532616268488', '2018-07-24', '2018-07-26', 500000, '/test001/0001.jpg' );
+
+INSERT INTO route VALUES (null, 1, 1, '제주도 해녀마을');
+INSERT INTO route VALUES (null, 1, 2, '서귀포 감귤마을');
+INSERT INTO route VALUES (null, 1, 3, '우도 산양축제');
+
+INSERT INTO route_detail VALUES (1, 1, 1, '/test001/0001.jpg', '해녀들을 느낄 수 있었던 이곳, 누구나 한 번쯤 자연으로 돌아가고 싶다는 생각을 들게한다.');
+INSERT INTO route_detail VALUES (1, 1, 2, null, '바삭바삭한 해변가를 걷다보면 나도 모르게 어린 시절로 돌아가곤 한다.');
+INSERT INTO route_detail VALUES (1, 1, 3, '/test001/0002.jpg', null);
+INSERT INTO route_detail VALUES (1, 2, 1, '/test001/0003.jpg', '높은 나무 위에 싱그럽게 열린 열매를 따기위해 까치발을 딛고 일어선 아이를 보고 있었다.');
+INSERT INTO route_detail VALUES (1, 2, 2, '/test001/0004.png', '나도 저런 시절이 있었겠지..');
+INSERT INTO route_detail VALUES (1, 3, 1, '/test001/0005.png', '산양처럼 살고 싶다.. 메에ㅔ..');
+
+INSERT INTO travel_tag VALUES (1, "제주도");
+INSERT INTO travel_tag VALUES (1, "자연으로");
+INSERT INTO travel_tag VALUES (1, "추억회상");
+
+# 2번째 글
+INSERT INTO travel VALUES (null, 'test002', '함께하고 싶을 때, 샌프란시스코로', '153261507868', '2018-07-01', '2018-07-15', 1250000, '/test002/0001.jpg' );
+
+INSERT INTO route VALUES (null, 2, 1, '샌프란시스코 공항');
+INSERT INTO route VALUES (null, 2, 2, 'PIER 39');
+INSERT INTO route VALUES (null, 2, 3, '금문교');
+
+INSERT INTO route_detail VALUES (2, 1, 1, '/test002/0001.jpg', '역시 나는 샌프란시스코를 좋아하나 보다.');
+INSERT INTO route_detail VALUES (2, 1, 2, null, '어느 순간 나는 또 다시 이 공항에 발을 들이고야 말았다.');
+
+INSERT INTO route_detail VALUES (2, 2, 1, '/test001/0002.jpg', '다시 봐도 예쁜 이 부둣가, 그리고 상쾌한 이 공기, 높디 높은 파란 하늘');
+INSERT INTO route_detail VALUES (2, 2, 2, '/test001/0003.png', '바다사자를 보고 있으면 그렇게 시간이 잘 흘러갈 수 없었다.');
+
+INSERT INTO route_detail VALUES (2, 3, 1, '/test001/0004.png', '언젠가 애니메이션에서 본 샌프란시스코의 장면에는 이 금문교가 자리잡고 있었다. 그리고 이제는 내 눈 앞에 자리 잡고 있다.');
+
+INSERT INTO travel_tag VALUES (2, "샌프란시스코");
+INSERT INTO travel_tag VALUES (2, "행복");
+INSERT INTO travel_tag VALUES (2, "하늘");
+
+
+# comment
+INSERT INTO comment VALUES (null, 'test002', 1, '저도 제주도 거주해서 이곳 잘알아요, 얼마나 이쁜 곳인지 :)', '1532616268488');
+INSERT INTO comment VALUES (null, 'test001', 1, '어머 이렇게 아름다운 곳에 거주하다니 꿈만 같을 것 같네요!', '1532616477994');
+INSERT INTO comment VALUES (null, 'test002', 1, '가끔씩은 서울의 화려한 불빛이 그립기도 해요 :D', '1532616505677');
+
+INSERT INTO comment VALUES (null, 'test002', 2, '잠시 잊고 있었다. 이 행복을,', '1532616268488');
+INSERT INTO comment VALUES (null, 'test001', 2, '감성이 풍부하신 것 같아요! test002님을 반짝반짝하게 만들어주는 이유 아닐까요?', '1532616268488');
+
+
+#select
+# 전체 게시글 가져오기
+ select * from travel order by board_time desc;
+
+# 검색한 게시글 가져오기
 

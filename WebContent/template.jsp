@@ -10,6 +10,8 @@
 
 <title>GoGoTravel</title>
 <%
+	String headerType = request.getParameter("HEADERTYPE");
+	
 	String contentPage = request.getParameter("CONTENTPAGE");
 %>
 
@@ -17,7 +19,7 @@
 </head>
 
 <body>
-	<jsp:include page="/include/html/header.jsp" flush="false" />
+	<jsp:include page="<%= headerType %>" flush="false" />
 	<jsp:include page="<%=contentPage%>" flush="false" />
 	<jsp:include page="/include/html/footer.jsp" flush="false" />
 

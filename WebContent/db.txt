@@ -86,3 +86,9 @@ CREATE TABLE comment(
   FOREIGN KEY (travel_id) REFERENCES travel(travel_id),
   FOREIGN KEY (user_id) REFERENCES user(user_id)
 )DEFAULT CHARSET=utf8;
+
+
+# insert
+# user table
+INSERT INTO user VALUES ('user_id', 'password', 'loc', level);
+

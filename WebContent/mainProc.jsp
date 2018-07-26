@@ -1,3 +1,3 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-header.jsp<br>
+    pageEncoding="UTF-8"%>
+하하 메인이랍니다.

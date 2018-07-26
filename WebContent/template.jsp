@@ -4,10 +4,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- include jQeury -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="include/css/template.css">
-<link rel="stylesheet" type="text/css" href="include/css/footer.css">
-<title>Insert title here</title>
+<title>GoGoTravel</title>
 <%
 	String contentPage = request.getParameter("CONTENTPAGE");
 %>
@@ -16,7 +17,10 @@
 </head>
 
 <body>
+	<jsp:include page="/include/html/header.jsp" flush="false" />
 	<jsp:include page="<%=contentPage%>" flush="false" />
+	<jsp:include page="/include/html/footer.jsp" flush="false" />
+
 </body>
 
 </html>

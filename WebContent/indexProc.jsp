@@ -8,33 +8,15 @@
 	
 <link rel="stylesheet" type="text/css" href="include/css/index.css">
  
+ 여행은 그런거죠 하하
+ <a href="main.jsp">체험하기</a> <br>
+ <a href="signup.jsp">함께하기</a> <br>
+ <a href="signin.jsp">로그인</a> <br>
 <jsp:useBean id="connector" class="DB.DBConnector" scope="page" />
  <%
- System.out.println("야호1");
- 	
- Connection conn = connector.getMySqlConnection();
-
- out.println("DB연결 정보1 : "+conn);
- conn = null;
-	System.out.println("야호mm");
-	try {
-			
-		Class.forName("com.mysql.jdbc.Driver");
-
-		String url = "jdbc:mysql://119.205.221.104:3306/GoGoTravel?characterEncoding=UTF-8&serverTimezone=UTC";
-		String user = "ggt2";
-		String password = "Aggt2018@)!*";
-		System.out.println("야호2"+user+"/"+password);
-		
-		conn = DriverManager.getConnection(url, user, password);
-		System.out.println(conn);
-	}catch(ClassNotFoundException | SQLException e) {
-		e.printStackTrace();
-		System.out.println(e.toString());
-	}	
-
-
- out.println("DB연결 정보2 : "+conn);
- 	
+	 
+	 Connection conn = DBConnector.getMySqlConnection();
+	 out.println("DB연결 정보!!!!!!!!!? : "+conn);
+ 
  	
  %>

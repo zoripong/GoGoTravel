@@ -1,0 +1,88 @@
+# DB 생성
+create table GoGoTravel;
+
+# 사용자 등록 및 권한 부여
+
+
+CREATE USER 'ggt2'@'localhost' IDENTIFIED BY 'Aggt2018@)!*';
+
+GRANT ALL PRIVILEGES ON *.* TO 'ggt2'@'localhost' WITH GRANT OPTION;
+
+CREATE USER 'ggt2@)!*'@'%' IDENTIFIED BY 'Aggt2018@)!*';
+
+ GRANT ALL PRIVILEGES ON *.* TO 'ggt2'@'%' IDENTIFIED BY 'Aggt2018@)!*' WITH GRANT OPTION;
+ 
+FLUSH PRIVILEGES;
+
+# 테이블 생성
+# user
+CREATE TABLE user(
+  user_id VARCHAR(32) NOT NULL,
+  password VARCHAR(32) NOT NULL,
+  loc VARCHAR(50),
+  level INT(2) unsigned NOT NULL default '0', 
+  PRIMARY KEY (user_id)
+)DEFAULT CHARSET=utf8;
+
+# travel
+CREATE TABLE travel(
+  travel_id INT(10) NOT NULL auto_increment,
+  user_id VARCHAR(32) NOT NULL,
+  title VARCHAR(50) NOT NULL,
+  start_date DATE NOT NULL,
+  end_date DATE NOT NULL,
+  budget INT(10) NOT NULL,
+  main_img VARCHAR(50),
+  PRIMARY KEY (travel_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
+)DEFAULT CHARSET=utf8;
+
+# travel_loc
+CREATE TABLE travel_loc(
+  travel_id INT(10),
+  loc VARCHAR(50) NOT NULL,
+  PRIMARY KEY (travel_id, loc),
+  FOREIGN KEY (travel_id) REFERENCES travel(travel_id)
+)DEFAULT CHARSET=utf8;
+
+# wish
+CREATE TABLE wish_travel(
+  user_id VARCHAR(32),
+  travel_id INT(10),
+  save_money INT(10),
+  PRIMARY KEY (user_id, travel_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id),
+  FOREIGN KEY (travel_id) REFERENCES travel(travel_id)
+)DEFAULT CHARSET=utf8;
+
+# route
+CREATE TABLE route(
+  route_id INT(10) NOT NULL auto_increment,
+  travel_id INT(10),
+  route_index INT(10) NOT NULL,
+  loc VARCHAR(50) NOT NULL,
+  PRIMARY KEY (route_id),
+  FOREIGN KEY (travel_id) REFERENCES travel(travel_id)
+)DEFAULT CHARSET=utf8;
+
+# route_detail
+CREATE TABLE route_detail(
+  route_id INT(10),
+  detail_index INT(10) NOT NULL,
+  img_src VARCHAR(50),
+  content VARCHAR(200),
+  PRIMARY KEY (route_id, detail_index),
+  FOREIGN KEY (route_id) REFERENCES route(route_id)
+)DEFAULT CHARSET=utf8;
+
+# comment
+CREATE TABLE comment(
+  comment_id INT(15) NOT NULL auto_increment,
+  user_id VARCHAR(32),
+  travel_id INT(10),
+  content VARCHAR(200) NOT NULL,
+  time DATE NOT NULL,
+  PRIMARY KEY (comment_id),
+  FOREIGN KEY (travel_id) REFERENCES travel(travel_id),
+  FOREIGN KEY (user_id) REFERENCES user(user_id)
+)DEFAULT CHARSET=utf8;

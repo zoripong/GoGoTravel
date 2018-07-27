@@ -64,19 +64,20 @@ CREATE TABLE route(
   route_index INT(10) NOT NULL,
   loc VARCHAR(50) NOT NULL,
   PRIMARY KEY (route_id),
+  UNIQUE KEY (route_id, route_index),
   FOREIGN KEY (travel_id) REFERENCES travel(travel_id)
 )DEFAULT CHARSET=utf8;
 
 # route_detail
 CREATE TABLE route_detail(
   travel_id INT(10),
-  route_id INT(10),
+  route_index INT(10),
   detail_index INT(10) NOT NULL,
   img_src VARCHAR(50),
   content VARCHAR(200),
-  PRIMARY KEY (travel_id, route_id, detail_index),
+  PRIMARY KEY (travel_id, route_index, detail_index),
   FOREIGN KEY (travel_id) REFERENCES travel(travel_id),
-  FOREIGN KEY (route_id) REFERENCES route(route_id)
+  FOREIGN KEY (route_index) REFERENCES route(route_index)
 )DEFAULT CHARSET=utf8;
 
 # comment
@@ -122,13 +123,13 @@ INSERT INTO route VALUES (null, 2, 1, '샌프란시스코 공항');
 INSERT INTO route VALUES (null, 2, 2, 'PIER 39');
 INSERT INTO route VALUES (null, 2, 3, '금문교');
 
-INSERT INTO route_detail VALUES (2, 1, 1, '/test002/0001.jpg', '역시 나는 샌프란시스코를 좋아하나 보다.');
-INSERT INTO route_detail VALUES (2, 1, 2, null, '어느 순간 나는 또 다시 이 공항에 발을 들이고야 말았다.');
+INSERT INTO route_detail VALUES (2, 4, 1, '/test002/0001.jpg', '역시 나는 샌프란시스코를 좋아하나 보다.');
+INSERT INTO route_detail VALUES (2, 4, 2, null, '어느 순간 나는 또 다시 이 공항에 발을 들이고야 말았다.');
 
-INSERT INTO route_detail VALUES (2, 2, 1, '/test001/0002.jpg', '다시 봐도 예쁜 이 부둣가, 그리고 상쾌한 이 공기, 높디 높은 파란 하늘');
-INSERT INTO route_detail VALUES (2, 2, 2, '/test001/0003.png', '바다사자를 보고 있으면 그렇게 시간이 잘 흘러갈 수 없었다.');
+INSERT INTO route_detail VALUES (2, 5, 1, '/test001/0002.jpg', '다시 봐도 예쁜 이 부둣가, 그리고 상쾌한 이 공기, 높디 높은 파란 하늘');
+INSERT INTO route_detail VALUES (2, 5, 2, '/test001/0003.png', '바다사자를 보고 있으면 그렇게 시간이 잘 흘러갈 수 없었다.');
 
-INSERT INTO route_detail VALUES (2, 3, 1, '/test001/0004.png', '언젠가 애니메이션에서 본 샌프란시스코의 장면에는 이 금문교가 자리잡고 있었다. 그리고 이제는 내 눈 앞에 자리 잡고 있다.');
+INSERT INTO route_detail VALUES (2, 6, 1, '/test001/0004.png', '언젠가 애니메이션에서 본 샌프란시스코의 장면에는 이 금문교가 자리잡고 있었다. 그리고 이제는 내 눈 앞에 자리 잡고 있다.');
 
 INSERT INTO travel_tag VALUES (2, "샌프란시스코");
 INSERT INTO travel_tag VALUES (2, "행복");
@@ -143,10 +144,34 @@ INSERT INTO comment VALUES (null, 'test002', 1, '가끔씩은 서울의 화려�
 INSERT INTO comment VALUES (null, 'test002', 2, '잠시 잊고 있었다. 이 행복을,', '1532616268488');
 INSERT INTO comment VALUES (null, 'test001', 2, '감성이 풍부하신 것 같아요! test002님을 반짝반짝하게 만들어주는 이유 아닐까요?', '1532616268488');
 
+# wish_travel
+INSERT INTO wish_travel VALUES ('test001', 1, 50000);
+
+
 
 #select
 # 전체 게시글 가져오기
  select * from travel order by board_time desc;
 
 # 검색한 게시글 가져오기
+# 1) tag에 포함
+# 2) title에 포함
+# 3) loc에 포함
 
+# 게시글 detail 가져오기
+SELECT * FROM travel WHERE travel_id = ;
+
+SELECT route.travel_id as travel_id, route.route_id as route_id, route_index, loc, detail_index, img_src, content
+FROM route
+RIGHT JOIN route_detail ON route.travel_id = route_detail.travel_id AND route.route_id = route_detail.route_id WHERE route.travel_id = 2
+ORDER BY route_index, detail_index;
+
+SELECT * FROM travel_tag WHERE travel_id = ;
+
+SELECT * FROM comment WHERE travel_id = 1 ORDER BY time ASC;
+
+# 가고 싶은 여행 찾기
+SELECT travel.travel_id as travel_id, travel.user_id as writer, title,  board_time, start_date, end_date, budget, main_img, wish_travel.user_id as user_id, save_money
+FROM travel
+JOIN wish_travel ON travel.travel_id = wish_travel.travel_id
+WHERE wish_travel.user_id = '';

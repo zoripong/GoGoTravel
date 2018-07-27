@@ -4,7 +4,7 @@
 	String id = (String)session.getAttribute("id");
 	Integer level = (Integer)session.getAttribute("level");
 	if(id != null && level != null ){
-		out.println(id+"님 ㅎㅇ 레벨은"+level);
+		out.println("<a href=\"myPage.jsp?tab=1\">"+id+"님</a>");
 	}else{
 		out.println("<a href=\"signin.jsp\">로그인</a>");
 		

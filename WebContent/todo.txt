@@ -1,5 +1,11 @@
 - main.jsp 검색기능
-- travel detail view
+
+- delete wish
+- travel delete / update
 - write about travel view
-- user page
+
+
+
 - wish travel
+- travel detail view
+- user page

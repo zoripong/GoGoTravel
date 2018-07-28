@@ -147,8 +147,7 @@ INSERT INTO comment VALUES (null, 'test001', 2, '감성이 풍부하신 것 같�
 # wish_travel
 INSERT INTO wish_travel VALUES ('test001', 1, 50000);
 
-
-
+ 	
 #select
 # 전체 게시글 가져오기
  select * from travel order by board_time desc;
@@ -175,3 +174,18 @@ SELECT travel.travel_id as travel_id, travel.user_id as writer, title,  board_ti
 FROM travel
 JOIN wish_travel ON travel.travel_id = wish_travel.travel_id
 WHERE wish_travel.user_id = '';
+
+
+#delete
+# travel
+DELETE FROM comment WHERE travel_id = ;
+DELETE FROM route_detail WHERE travel_id = ;
+DELETE FROM route WHERE travel_id = ;
+DELETE FROM wish_travel WHERE travel_id = ;
+DELETE FROM travel_tag WHERE travel_id ;
+DELETE FROM travel WHERE travel_id = ;
+
+
+
+# wish_travel
+DELETE FROM wish_travel WHERE user_id = '' AND travel_id = ;

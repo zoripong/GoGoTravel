@@ -10,12 +10,12 @@ detail 이다.
 	String success = request.getParameter("isSuccess");
 	
 	if(success != null){
-		if(Boolean.parseBoolean(success)){
-			out.println("<script>alert('곧 떠날 수 있을거예요:)');</script>");
-		}else{
+		if(!Boolean.parseBoolean(success)){
 			out.println("<script>alert('이미 돈을 모으고 있던걸요?');</script>");			
 		}
 	}
+	
+	
 %>
 <%
 	String index = request.getParameter("index");
@@ -80,20 +80,27 @@ detail 이다.
 
 <%
 	
-	String destPage;
+	String wishPage;
+	String commentPage;
 	if(session.getAttribute("id") == null){
-		destPage = "signin.jsp";
+		wishPage = "signin.jsp";
+		commentPage = "signin.jsp";
 	}else{
-		destPage = "wishService.jsp";
+		wishPage = "wishService.jsp";
+		commentPage = "commentService.jsp";
 	}
 %>
 
-<form action="<%= destPage %>">
+<form action="<%= wishPage %>">
 	<input type="hidden" name="index" value="<%= index %>">
 	한 달에 
 	<input type="number" name="save_money" required>원 씩 모아서
 	<input type="submit" value="가고싶어..">
 </form>
 
-
+<form action="<%= commentPage %>">
+	<input type="hidden" name="index" value="<%= index %>">
+	<input type="text" name="content" placeholder="댓글을 남겨주세요." required>
+	<input type="submit" value="남기기">
+</form>
 

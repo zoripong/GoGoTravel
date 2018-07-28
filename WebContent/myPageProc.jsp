@@ -4,6 +4,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	String tabRe[] = {"내 여행 삭제", "가자 여행 삭제"};
+	String isSuccess = request.getParameter("isSuccess");
 	
 	int tab = Integer.parseInt(request.getParameter("tab"));
 	String user_id = (String)session.getAttribute("id");
@@ -24,6 +26,9 @@
 			System.out.println(rs.getString("title")+"/"+rs.getInt("budget")+"<br>");
 		}
 	}else if(tab == 2){
+		
+		
+		
 		// wish list 가져오기
 		String sql = "SELECT travel.travel_id as travel_id, travel.user_id as writer, title,  board_time, start_date, end_date, budget, main_img, wish_travel.user_id as user_id, save_money "
 					+ "FROM travel "
@@ -39,6 +44,14 @@
 			sb.append("<a href=\"deleteWishService.jsp?travel_id="+rs.getString("travel_id")+"&user_id="+user_id+"\">삭제하기</a>");			
 			sb.append("<br>");
 		}
+	}
+	
+	if(isSuccess != null){
+		if(Boolean.parseBoolean(isSuccess)){
+			out.println("<script>alert('"+tabRe[tab-1]+" 성공')</script>");
+		}else{
+			out.println("<script>alert('"+tabRe[tab-1]+" 실패')</script>");
+		}	
 	}
 	
 	out.println(sb.toString());

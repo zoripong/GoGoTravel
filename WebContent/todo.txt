@@ -1,12 +1,11 @@
+[todo]
 - main.jsp 검색기능
-
 - route 추가한 input text 삭제
-
 - update travel 
-- write about travel view (detail service만 남았다.)
 
-
+[done]
 - delete wish / travel
 - wish travel
 - travel detail view
 - user page
+- write about travel view (detail service만 남았다.)

@@ -5,7 +5,7 @@
 
 <!-- include user js file -->
 <script src="include/script/signup.js"></script>
-<form id="form_signup" action="signupService.jsp" enctype="multipart/form-data" method="POST">
+<form id="form_signup" action="signupService.jsp" method="POST">
 	<input  type="text" name="id"  placeholder="ID" required />
 	<input id="input_id_check" type="button" value="ID체크"/>
 	<input id="input_pw" type="password" name="password" placeholder="Password" required/> 

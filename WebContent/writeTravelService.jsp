@@ -7,6 +7,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
+
 	request.setCharacterEncoding("UTF-8");
 	DBExecutor db = new DBExecutor(DBConnector.getMySqlConnection());
 	
@@ -19,7 +20,7 @@
  	realFolder = scontext.getRealPath("image/"+String.valueOf(session.getAttribute("id")));
  	
  	try{
- 		multi=new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+ 		multi = new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
  		Enumeration<?> files = multi.getFileNames();
     	String file1 = (String)files.nextElement();
 		filename1 = multi.getFilesystemName(file1);
@@ -28,30 +29,22 @@
 	}
 
  	
+ 	
+ 	
 	String user_id = multi.getParameter("user_id");
 	String title = multi.getParameter("title");
 	String board_time = multi.getParameter("board_time");
 	String start_date = multi.getParameter("start_date");
 	String end_date = multi.getParameter("end_date");
 	String budget = multi.getParameter("budget");
-	String main_image = multi.getParameter("main_image");
+	String main_image = multi.getParameter("hidden_main_img");
 	
-//	INSERT INTO travel VALUES (null, 'test001', '떠나요, 제주도', '1532616268488', '2018-07-24', '2018-07-26', 500000, '/test001/0001.jpg' );
-
-
-
-
-	System.out.println("INSERT INTO travel VALUES(null, '"+user_id+"', '"+title+"', '"+board_time+"', '"+start_date+"', '"+end_date+"', "+budget+", '"+main_image+"' );");
-
 	int travel_id = -1;
 	if(db.exec("INSERT INTO travel VALUES(null, '"+user_id+"', '"+title+"', '"+board_time+"', '"+start_date+"', '"+end_date+"', "+budget+", '"+main_image+"' );")){
-		System.out.println("등록 성공");
-		
 		ResultSet rs = db.execToSet("SELECT * FROM travel WHERE user_id = '"+user_id+"' AND board_time = '"+board_time+"';");
 		if(rs.next()){
 			travel_id = rs.getInt("travel_id");
 		}
-		
 		if(travel_id == -1){
 			%>
 			<jsp:forward page="writeTravel.jsp?isFailed=true"/>
@@ -59,9 +52,8 @@
 		}else{
 			String rTags = multi.getParameter("tags");
 			String tags[] = rTags.replace(" ", "").split("#");
-			
-			for(String tag : tags){
-				if(!db.exec("INSERT INTO travel_tag VALUES ("+travel_id+", '"+tag+"');")){
+			for(int i = 1; i<tags.length; i++){
+				if(!db.exec("INSERT INTO travel_tag VALUES ("+travel_id+", '"+tags[i]+"');")){
 					%>
 					<jsp:forward page="writeTravel.jsp?isFailed=true"/>
 					<%
@@ -77,9 +69,7 @@
 				}
 			}
 			response.sendRedirect("writeTravelDetail.jsp?travel_id="+travel_id);
-			
 		}
-		
 	}else{
 		System.out.println("등록 실패"); %>
 		<jsp:forward page="writeTravel.jsp?isFailed=true"/>

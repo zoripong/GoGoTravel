@@ -191,4 +191,10 @@ DELETE FROM travel WHERE travel_id = ;
 DELETE FROM wish_travel WHERE user_id = '' AND travel_id = ;
 
 #data 초기화
-
+DELETE FROM comment;
+DELETE FROM route_detail;
+DELETE FROM route;
+DELETE FROM wish_travel;
+DELETE FROM travel_tag;
+DELETE FROM travel;
+DELETE FROM user;

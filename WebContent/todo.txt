@@ -2,8 +2,8 @@
 
 - route 추가한 input text 삭제
 
-- update travel
-- write about travel view
+- update travel 
+- write about travel view (detail service만 남았다.)
 
 
 - delete wish / travel

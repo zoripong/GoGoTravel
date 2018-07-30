@@ -1,38 +1,48 @@
+<%@page import="java.util.Enumeration"%>
+<%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="DB.DBConnector"%>
 <%@page import="DB.DBExecutor"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
-		<input type="hidden" name="user_id" value="<%=session.getAttribute("id")%>">
- 		<input type="hidden" name="board_time" value="<%= System.currentTimeMillis()%>">
- 
-	 	<input type="text" name="title" required><br>
- 	
-	 	<input type="file" name="main_image" accept="image/*" ><br>
-	 	<input type="date" name="start_date" required>-
-	 	<input type="date" name="end_date" required><br>
-	 	<input type="number" name="budget" required><br>
-	
-	 	<input type="text" name="tag">
-	
-	 	<input type="text" name="route">
-	
- 
-
 <%
 	request.setCharacterEncoding("UTF-8");
 	DBExecutor db = new DBExecutor(DBConnector.getMySqlConnection());
 	
-	String user_id = request.getParameter("user_id");
-	String title = request.getParameter("title");
-	String board_time = request.getParameter("board_time");
-	String start_date = request.getParameter("start_date");
-	String end_date = request.getParameter("end_date");
-	String budget = request.getParameter("budget");
-	String main_image = request.getParameter("main_image");
+	MultipartRequest multi = null;
+	String realFolder = "";
+	String filename1 = "";
+	int maxSize = 1024*1024*5;
+ 	String encType = "UTF-8";
+ 	ServletContext scontext = getServletContext();
+ 	realFolder = scontext.getRealPath("image/"+String.valueOf(session.getAttribute("id")));
+ 	
+ 	try{
+ 		multi=new MultipartRequest(request, realFolder, maxSize, encType, new DefaultFileRenamePolicy());
+ 		Enumeration<?> files = multi.getFileNames();
+    	String file1 = (String)files.nextElement();
+		filename1 = multi.getFilesystemName(file1);
+	} catch(Exception e) {
+		e.printStackTrace();
+	}
+
+ 	
+	String user_id = multi.getParameter("user_id");
+	String title = multi.getParameter("title");
+	String board_time = multi.getParameter("board_time");
+	String start_date = multi.getParameter("start_date");
+	String end_date = multi.getParameter("end_date");
+	String budget = multi.getParameter("budget");
+	String main_image = multi.getParameter("main_image");
 	
 //	INSERT INTO travel VALUES (null, 'test001', '떠나요, 제주도', '1532616268488', '2018-07-24', '2018-07-26', 500000, '/test001/0001.jpg' );
-	
+
+
+
+
+	System.out.println("INSERT INTO travel VALUES(null, '"+user_id+"', '"+title+"', '"+board_time+"', '"+start_date+"', '"+end_date+"', "+budget+", '"+main_image+"' );");
+
 	int travel_id = -1;
 	if(db.exec("INSERT INTO travel VALUES(null, '"+user_id+"', '"+title+"', '"+board_time+"', '"+start_date+"', '"+end_date+"', "+budget+", '"+main_image+"' );")){
 		System.out.println("등록 성공");
@@ -47,7 +57,7 @@
 			<jsp:forward page="writeTravel.jsp?isFailed=true"/>
 			<%
 		}else{
-			String rTags = request.getParameter("tags");
+			String rTags = multi.getParameter("tags");
 			String tags[] = rTags.replace(" ", "").split("#");
 			
 			for(String tag : tags){
@@ -58,7 +68,7 @@
 				}
 			}
 			
-			String routes[] = request.getParameterValues("route");
+			String routes[] = multi.getParameterValues("route");
 			for(int i = 0; i<routes.length; i++){
 				if(!db.exec("INSERT INTO route VALUES (null, "+travel_id+", "+(i+1)+", '"+routes[i]+"');")){
 					%>

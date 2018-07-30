@@ -1,3 +1,4 @@
+<%@page import="java.io.File"%>
 <%@page import="DB.DBExecutor"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="DB.DBConnector"%>
@@ -17,7 +18,19 @@
 	DBExecutor db = new DBExecutor(DBConnector.getMySqlConnection());
 	
 	if(db.exec("INSERT INTO user VALUES ('"+id+"', '"+password+"', '"+location+"', 0);")){
-		System.out.println("회원가입 성공");%>
+		System.out.println("회원가입 성공");
+	
+	 	ServletContext scontext = getServletContext();
+ 		String realFolder = scontext.getRealPath("image/"+id);
+		 File file = new File(realFolder);
+		System.out.println(realFolder);
+        if(!file.exists()){
+            file.mkdirs();
+            System.out.println("created directory successfully!");
+        }%>
+
+ 	
+	
 		<jsp:forward page="signin.jsp"/>
 		<%
 	}else{

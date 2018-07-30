@@ -10,7 +10,7 @@
  
  %>
 <link rel="stylesheet" type="text/css" href="include/css/writeTravel.css">
-<form id="content_form" action="writeTravelService.jsp" method="POST">
+<form id="content_form"  enctype="multipart/form-data" action="writeTravelService.jsp" method="POST">
  	<input type="hidden" name="user_id" value="<%=session.getAttribute("id")%>">
  	<input type="hidden" name="board_time" value="<%= System.currentTimeMillis()%>">
  

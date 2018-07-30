@@ -189,3 +189,6 @@ DELETE FROM travel WHERE travel_id = ;
 
 # wish_travel
 DELETE FROM wish_travel WHERE user_id = '' AND travel_id = ;
+
+#data 초기화
+

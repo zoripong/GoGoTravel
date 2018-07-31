@@ -16,10 +16,10 @@
  <%
 	 
 	 Connection conn = DBConnector.getMySqlConnection();
-	 out.println("DB연결 정보!!!!!!!!!? : "+conn);
+	 //System.out.println("DB연결 정보!!!!!!!!!? : "+conn);
  
 	 Timestamp ts=new Timestamp(System.currentTimeMillis());
-	 System.out.println("TimeStamp:"+ ts);
-	 System.out.println("currentTimeMillis:"+ System.currentTimeMillis());
+	 //System.out.println("TimeStamp:"+ ts);
+	 //System.out.println("currentTimeMillis:"+ System.currentTimeMillis());
 	 
  %>

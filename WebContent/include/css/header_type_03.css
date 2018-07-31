@@ -1,0 +1,74 @@
+*{
+	margin:0;	
+	padding:0;
+}
+	
+header{
+	width:100%;
+	height:300px;
+	background-color:pink;
+	position : relative;
+}
+nav{
+	background-color:yellow;
+	width:100%;
+	height:50px;
+	line-height:50px;
+}
+#sc_main_link{
+	display:block;
+	width:100%;
+	height:50px;
+	position : relative;
+}
+#img_main{
+	width : 30px;
+	height : 30px;
+	margin-left : 20px;
+	position: absolute;
+    top : 50%;
+    left: 0%;
+    -ms-transform: translate(0%, -50%);
+    transform    : translate(0%, -50%);
+}
+#sc_user_info{
+	width:20%;
+	position : absolute;
+	top:50%;
+	left:50%;
+    transform: translate(-50%, -50%);
+}
+#p_user_id{
+	width:100%;	
+	font-size: 24pt;
+	padding-left:20px;
+	line-height:70px;
+	vertical-align:middle;	
+}
+#p_user_level{
+	width:100%;	
+	font-size: 21pt;
+	line-height:70px;
+	vertical-align:middle;
+}
+.sp_point{
+	font-weight:bolder;
+}
+.menu_item{
+	width:15%;
+	margin:0 17%;
+	display:inline-block;
+	text-align : center;
+	vertical-align: middle;
+	border-bottom : 3px solid red;
+}
+.menu_item>a{
+	color:black;
+	font-weight:normal;
+	font-size:13pt;
+	text-decoration:none;
+}
+.menu_item>a:hover{
+	font-weight:bolder;
+	
+}

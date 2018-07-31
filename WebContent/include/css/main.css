@@ -1,6 +1,55 @@
-*{padding:0;margin:0;}
+#sc_travel_list{
+	width:100%;
+	height:100%;
+	min-height:100%;
+	display:block;
+}
 
+.sc_line{
+	display:block;
+	width:80%;
+	margin-left:10%;
+	height:500px;
+	text-align:center;
+}
 
+.sc_item{
+	display:inline-block;
+	width:24%;
+	margin:0.25%;
+}
+.img_container{
+	width:100%;
+	height:100%; 
+	overflow: hidden;
+	position: relative;
+}
+.main_img{
+ 	max-height: 100%;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    
+    display: block;
+ }
+
+#p_info{
+	width:100%;
+	color:#555555;
+	font-size:24pt;
+	position:absolute;
+	text-align:center;
+    top : 50%;
+    left: 0%;
+    -ms-transform: translate(0%, -50%);
+    transform    : translate(0%, -50%);  
+}
 #float_btn {
     z-index: 989;
     position: fixed;

@@ -2,6 +2,7 @@
 - main.jsp 검색기능
 - route 추가한 input text 삭제
 - update travel 
+- 게시글 올릴 경우 레벨업
 
 [done]
 - delete wish / travel

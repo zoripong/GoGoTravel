@@ -40,6 +40,10 @@ footer>p>a:hover{
 	
 }
 .fa-github, .fa-instagram, .fa-facebook-square{
-	color:#ffffff;
+	color:#cccccc;
 	margin:5px;
+}
+.fa-github:hover, .fa-instagram:hover, .fa-facebook-square:hover{
+	color:#ffffff;
+	
 }

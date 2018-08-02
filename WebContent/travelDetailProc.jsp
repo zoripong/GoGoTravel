@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.util.Date"%>
 <%@page import="java.sql.ResultSet"%>
@@ -26,15 +28,55 @@
 	ResultSet travelSet = db.execToSet(sql);
 	
 	
+	String title = "";
+	String user_id = "";
+	String period = "" ;
+	String boardTime = "";
+	int budget = -1;
+	
+	ArrayList<String> tags = new ArrayList<>();
+	ArrayList<String> locs = new ArrayList<>();
+	
+	
 	if(travelSet.next()){
-		out.println(travelSet.getString("user_id")+"/"+travelSet.getString("start_date")+"~"+travelSet.getString("end_date")+"/"+travelSet.getString("title")+"/"+travelSet.getString("main_img")+"/"+travelSet.getString("budget"));
-		out.println(new Timestamp(travelSet.getLong("board_time"))+"<br>");
+		//out.println(travelSet.getString("user_id")+"/"+travelSet.getString("start_date")+"~"+travelSet.getString("end_date")+"/"+travelSet.getString("title")+"/"+travelSet.getString("main_img")+"/"+travelSet.getString("budget"));
+		//out.println(new Timestamp(travelSet.getLong("board_time"))+"<br>");
+		title = travelSet.getString("title");
+		user_id = travelSet.getString("user_id");
+		
+		// get Period
+		final String OLD_FORMAT = "yyyy-MM-dd";
+		final String NEW_FORMAT = "yyyy.MM.dd.";
+		
+		String oldStartDate= travelSet.getString("start_date");
+		String oldEndDate = travelSet.getString("end_date");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(OLD_FORMAT);
+		Date d = sdf.parse(oldStartDate);
+		sdf.applyPattern(NEW_FORMAT);
+		period += sdf.format(d);
+		
+		period += " - ";
+		
+		sdf.applyPattern(OLD_FORMAT);
+		d = sdf.parse(oldEndDate);
+		sdf.applyPattern(NEW_FORMAT);
+		period += sdf.format(d);
+		
+		boardTime = new SimpleDateFormat("yyyy.MM.dd. hh:mm").format(travelSet.getLong("board_time"));
+		budget = Integer.parseInt(travelSet.getString("budget"));
+		//System.out.println("time : "+str);
 	}
+	
+	System.out.println(period);
+	
+
 	
 	sql = "SELECT * FROM travel_tag WHERE travel_id = "+index+";";
 	ResultSet tagSet = db.execToSet(sql);
 	while(tagSet.next()){
-		out.println(tagSet.getString("tag")+"<br>");
+		tags.add(tagSet.getString("tag"));
+		System.out.println(tagSet.getString("tag")+"<br>");
 	}	
 	
 	
@@ -44,9 +86,10 @@
 		+ "ORDER BY route_index;";
 		
 	ResultSet routeSet = db.execToSet(sql);
-	out.println("<br><b>OVERVIEW</b><br>");
+	System.out.println("<br><b>OVERVIEW</b><br>");
 	while(routeSet.next()){
-		out.println(routeSet.getString("loc")+"<br>");		
+		locs.add(routeSet.getString("loc"));
+		System.out.println(routeSet.getString("loc")+"<br>");		
 	}
 	
 	sql = "SELECT loc, img_src, content "
@@ -58,7 +101,7 @@
 	ResultSet detailSet = db.execToSet(sql);
 	
 	while(detailSet.next()){
-		out.println(detailSet.getString("loc")+"/"+detailSet.getString("img_src")+"/"+detailSet.getString("content")+"<br>");
+		System.out.println(detailSet.getString("loc")+"/"+detailSet.getString("img_src")+"/"+detailSet.getString("content")+"<br>");
 	}
 	
 	
@@ -71,7 +114,7 @@
 	ResultSet commentSet = db.execToSet(sql);
 	
 	while(commentSet.next()){
-		out.println(commentSet.getString("user_id")+"/"+commentSet.getString("content")+"/"+new Timestamp(commentSet.getLong("time"))+"<br>");
+		System.out.println(commentSet.getString("user_id")+"/"+commentSet.getString("content")+"/"+new Timestamp(commentSet.getLong("time"))+"<br>");
 	}
 		
 

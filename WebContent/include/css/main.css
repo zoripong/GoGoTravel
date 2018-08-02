@@ -8,6 +8,7 @@
 	background-color:#ffffff;
 	/*margin-top : -150px;*/
 	/*box-shadow: 1px 1px 0px 0px rgba(172, 172, 172, 1);*/
+	margin-bottom:50px;
 }
 
 .sc_line{
@@ -84,7 +85,21 @@
 .p_budget{
 	padding : 0px 5% 15px;
 }
-
+.p_tags{
+	width:90%;
+	text-align:left;
+	padding : 0px 5% 15px;
+	overflow:hidden;
+}
+.p_tags>a{
+	text-size : 15pt;
+	color : #1155cc;
+	text-decoration: none;
+	margin : 0 5px;
+}
+.p_tags>a:hover{
+	text-decoration: underline;
+}
 #p_info{
 	width:100%;
 	color:#555555;

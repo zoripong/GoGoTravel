@@ -16,6 +16,7 @@
 	if(id != null && level != null ){
 		out.println("<a id=\"home_link\" href=\"myPage.jsp?tab=1\"><img id=\"img_home\" src=\"include/image/ic_home.svg\"><span id=\"sp_user\">"+id+"</span></a>");
 	}else{
+		out.println("<a id=\"home_link\" href=\"myPage.jsp?tab=1\"><img class=\"hidden\"  id=\"img_home\" src=\"include/image/ic_home.svg\"><span class=\"hidden\" id=\"sp_user\">"+id+"</span></a>");
 		out.println("<a id=\"home_link\" href=\"signin.jsp\">로그인</a>");
 	}
 	out.println("</section>");

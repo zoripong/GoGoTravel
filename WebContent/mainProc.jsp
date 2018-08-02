@@ -60,16 +60,27 @@
 			sb.append("<p class=\"p_title\">"+rs.getString("title")+"</p>");
 			sb.append("<p class=\"p_date\">"+period+"</p>");
 			sb.append("<p class=\"p_budget\">&#8361 "+rs.getInt("budget")+"</p>");
+			sb.append("<p class=\"p_tags\">");
+			// tag
+			DBExecutor tagdb = new DBExecutor(DBConnector.getMySqlConnection());
+			ResultSet tagSet = tagdb.execToSet("select * from travel_tag where travel_id="+rs.getString("travel_id")+";");
+			while(tagSet.next()){
+				sb.append("<a href=\"main.jsp?search_keyword="+tagSet.getString("tag")+"\">#"+tagSet.getString("tag")+"</a>");
+			}			
+			sb.append("</p>");
 			sb.append("</section>");
 			sb.append("</a>");
 
+			//System.out.println("travel_id : "+rs.getString("travel_id"));
+			
+			
 			count+=1;
 		}
 
 		// 8개 이상일 때는 그 줄만 마무리 될 수 있게
 		// 8개 이하일 때는 8개를 채워서
 		while(count % 4 != 0 || count < 12){
-			System.out.println(count);
+			//System.out.println(count);
 			if(count % 4 == 0 && count < 12){
 				sb.append("</section><section class=\"sc_line\">");
 			}
@@ -89,6 +100,8 @@
 			sb.append("<p class=\"p_date hidden\">2018.07.30. - 2018.08.01.</p>");
 			sb.append("<p class=\"p_title text_center guide_message\">당신의 이야기를 들려주세요.</p>");
 			sb.append("<p class=\"p_budget hidden\">&#8361 50000</p>");
+			sb.append("<p class=\"p_tags hidden\">#태그</p>");
+			
 			sb.append("</section>");
 			if(count <=8){
 				sb.append("</a>");

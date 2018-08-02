@@ -68,13 +68,17 @@
 
 		// 8개 이상일 때는 그 줄만 마무리 될 수 있게
 		// 8개 이하일 때는 8개를 채워서
-		while(count % 4 != 0 || count < 8){
+		while(count % 4 != 0 || count < 12){
 			System.out.println(count);
-			if(count % 4 == 0 && count < 8){
+			if(count % 4 == 0 && count < 12){
 				sb.append("</section><section class=\"sc_line\">");
 			}
-			if(count <= 8){
-				sb.append("<a href=\"writeTravel.jsp\">");
+			if(count <= 12){
+				if((String)session.getAttribute("id") != null){
+					sb.append("<a href=\"writeTravel.jsp\">");
+				}else{
+					sb.append("<a href=\"signin.jsp\">");
+				}
 				sb.append("<section class=\"sc_item\">");
 			}else{
 				sb.append("<section class=\"sc_item hidden\">");	

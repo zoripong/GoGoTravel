@@ -1,25 +1,58 @@
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@font-face {
+    font-family: myFirstFont;
+    src: url('../font/Allura-Regular.otf');
+}
 header{
 	width:100%;
-	height:100px;
+	height:500px;
+	overflow:hidden;
+	position: relative;
+}
+#myVideo{
+	z-index : -100;
+	width:100%;
+	height:auto;
+	position:absolute;
+	top:50%;
+	transform    : translate(0%, -50%);  
 }
 #sc_user{
 	width: 100%;
 	text-align: right;
 	padding:5px 0px;
+	position:relative;
 }
 #sp_user{
 	margin:30px;
+	margin-left : 10px;
+	
+}
+#img_home{
+	width:25px;
+	height:25px;
+	position:absolute;
+	top:50%;
+	
+	transform    : translate(0%, -50%);  
+	
 }
 
-#sp_user>a{
-	color: #000000;
-	font-size:12pt;
+#sp_user{
+	color: #111111;
+	font-size:14pt;
+	font-weight:500;
 }
 
-#sp_user>a:hover{
+#home_link{
+	color: #111111;
 	text-decoration: none;
 }
-#sp_user>a:visitied{
+#home_link:hover{
+	text-decoration: underline;	
+}
+
+#home_link:visitied{
 	color: #000000;
 	
 }
@@ -29,22 +62,60 @@ header{
 	height: 50px;
 	line-height: 50px;
 	text-align :center;
+	
 }
 
-#ic_search_bar{
-	border: 0.5px solid #cccccc;
-	width:80%;
+#sc_search_container{
+	border: 0.5px solid #ffffff;
+	width:20%;
 	height:40px;
 	border-radius:40px;
-	color:#333333;
+	transition: 1.0s ease;
 	text-align:center;
 	display:inline-block;
-	vertical-align: middle;
-	margin:0px 15px;
+	margin:15px;
+	line-height:40px;
+	
 }
+
+#sc_search_container:hover{
+	border: 0.5px solid #eeeeee;
+}
+#ic_search_bar{
+	color:#ffffff;
+	border : 0px solid #ffffff;
+	width:80%;
+	height:80%;
+	vertical-align: middle;
+	background-color : rgba(255, 255, 255, 0);
+	text-align:center;
+}
+
+
 #ic_search_btn{
-	width:40px;
-	height:40px;
+	width:20px;
+	height:20px;
 	display:inline-block;
 	vertical-align: middle;
+	opacity : 0.8;
+	transition: 1.0s ease;
+}
+#ic_search_btn:hover{
+	opacity:1.0;
+}
+
+#title{
+	color : #222222;
+	font-size : 22pt;
+	padding-top:25px;
+	text-align:center;
+	font-family: myFirstFont, serif;
+}
+#separation{
+	width : 5%;
+	border:3px solid #000000;
+	margin-left : 47.5%;
+	margin-top:25px;
+		opacity : 0.1;
+	
 }

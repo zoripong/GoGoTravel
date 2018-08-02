@@ -2,5 +2,5 @@
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="include/css/header_type_01.css">
 <header>
-	<a href="main.jsp"><img id="img_main" src="include/image/ic_logo.svg"/></a>
+	<p id="p_logo"><a href="main.jsp">Travel</a></p>
 </header>

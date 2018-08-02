@@ -5,7 +5,7 @@
 <%@page import="DB.DBExecutor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-detail 이다.
+<link rel="stylesheet" type="text/css" href="include/css/travelDetail.css">
 <%
 	String success = request.getParameter("isSuccess");
 	

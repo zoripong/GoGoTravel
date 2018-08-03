@@ -101,6 +101,7 @@
 	ResultSet detailSet = db.execToSet(sql);
 	
 	while(detailSet.next()){
+		
 		System.out.println(detailSet.getString("loc")+"/"+detailSet.getString("img_src")+"/"+detailSet.getString("content")+"<br>");
 	}
 	

@@ -1,25 +1,30 @@
+@font-face {
+    font-family: titlefont;
+    src: url('../font/Allura-Regular.otf');
+}
+
 #sc_signup{
 	display:block;
 	width : 100%;
 	height: 100%;
-	background-image: url("../image/signup.jpg");
+	background-image: url("../image/bg_signup.jpg");
 	background-position: center;
     background-repeat: no-repeat;
     background-size: cover;    
     position : relative;
-	z-index:-10;
+	z-index:500;
 }
 #sc_overlay{
 	width:100%;
 	height:100%;
 	background-color : rgba(0, 0, 0, 0.3);
 	position : absolute;
-	z-index:-5;
+	z-index:-50;
 }
 #sc_signup_box{
 	width : 25%;
 	height : 50%;
-/*	background-color : #ffffff;*/
+	background-color : #ffffff;
 	border : 2px solid #ffffff;
 	position : absolute;
 	top : 0;
@@ -27,16 +32,71 @@
 	bottom : 0;
 	right : 0;
 	margin:auto;
+	border-radius : 15px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
-#form_signup{
+#sc_signup_box>p{
+	font-family: titlefont, serif;
+}
+#p_title{
+	width:100%;
+	color: #333333;
+	font-size: 24pt; 
+	text-align: center;
+	padding-top: 40px;
+}
+#p_sub_title{
+	width: 100%;
+	color: #acacac;
+	font-size:14pt;
+	text-align: center;
+}
 
-	
-}
-#form_signup>input{
-	
-	border:none;
-	background-color : rgba(0, 0, 0, 0);
-	color: #ffffff;
-	border-bottom : 1px solid #ffffff;
+#form_signup{
+	width:100%;
+	height:auto;
 	display:block;
+	position:absolute;
+    top : 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform    : translate(-50%, -50%); 
+    padding-top: 50px;
+}
+.input_text{
+	width : 65%;
+	height : 50px;
+	color: #111111;
+	background-color : #ffffff;
+	border:none;
+	border-bottom : 1px solid #cccccc;
+	display:block;
+	padding: 0 5%;
+	margin:	10px 0;
+	margin-left : 12.5%;
+}
+
+::placeholder {
+	color : #111111;
+}
+
+#input_submit{
+	width : 80%;
+	height : 50px;
+	display:block;
+	margin-top: 20px;
+	margin-left: 10%;
+	color : #ffffff;
+	background-color : #333333;
+	border : 1px solid #cccccc;
+	transition: .3s ease;
+}
+#input_submit:hover{
+	border-radius:10px;
+}
+#separation{
+	width: 10%;
+	margin: 15px 45%;
+	border:3px solid #000000;
+	opacity:0.1;
 }

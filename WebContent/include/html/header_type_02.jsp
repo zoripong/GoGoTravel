@@ -8,7 +8,7 @@
 	  <source src="include/video/search.mp4" type="video/mp4">
 	</video>
 -->
-	<img src="include/image/main.jpg" id="myVideo">
+	<img src="include/image/bg_header_type_02.jpg" id="myVideo">
 <% 
 	String id = (String)session.getAttribute("id");
 	Integer level = (Integer)session.getAttribute("level");

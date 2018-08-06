@@ -70,5 +70,7 @@ nav{
 }
 .menu_item>a:hover{
 	font-weight:bolder;
-	
+}
+#sc_user_info{
+	/*TODO: Background-image*/
 }

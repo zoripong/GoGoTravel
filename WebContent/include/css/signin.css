@@ -23,7 +23,7 @@
 }
 #sc_signin_box{
 	width : 25%;
-	height : 50%;
+	height : 65%;
 	background-color : #ffffff;
 	border : 2px solid #ffffff;
 	position : absolute;
@@ -35,7 +35,7 @@
 	border-radius : 15px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 }
-#sc_signin_box>p{
+#sc_container>p{
 	font-family: titlefont, serif;
 }
 #p_title{
@@ -61,7 +61,6 @@
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform    : translate(-50%, -50%); 
-    padding-top: 50px;
 }
 .input_text{
 	width : 65%;
@@ -109,7 +108,7 @@
 	margin-bottom:40px;
 	text-align:center;
 }
-#form_signin>a{
+#sc_link>a{
 	color : #1155cc;
 	display:block;
 	padding:10px 0;

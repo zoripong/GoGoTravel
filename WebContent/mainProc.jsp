@@ -5,7 +5,6 @@
 <%@page import="java.sql.ResultSet"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
 <link rel="stylesheet" type="text/css" href="include/css/main.css">
 <%
 
@@ -79,36 +78,37 @@
 
 		// 8개 이상일 때는 그 줄만 마무리 될 수 있게
 		// 8개 이하일 때는 8개를 채워서
-		while(count % 4 != 0 || count < 12){
-			//System.out.println(count);
-			if(count % 4 == 0 && count < 12){
-				sb.append("</section><section class=\"sc_line\">");
-			}
-			if(count <= 12){
-				if((String)session.getAttribute("id") != null){
-					sb.append("<a href=\"writeTravel.jsp\">");
-				}else{
-					sb.append("<a href=\"signin.jsp\">");
+		if(count != 0){
+			while(count % 4 != 0 || count < 12){
+				//System.out.println(count);
+				if(count % 4 == 0 && count < 12){
+					sb.append("</section><section class=\"sc_line\">");
 				}
-				sb.append("<section class=\"sc_item\">");
-			}else{
-				sb.append("<section class=\"sc_item hidden\">");	
+				if(count <= 12){
+					if((String)session.getAttribute("id") != null){
+						sb.append("<a href=\"writeTravel.jsp\">");
+					}else{
+						sb.append("<a href=\"signin.jsp\">");
+					}
+					sb.append("<section class=\"sc_item\">");
+				}else{
+					sb.append("<section class=\"sc_item hidden\">");	
+				}
+				sb.append("<div class=\"img_container\">");
+				sb.append("<img class=\"main_img image_opacity\" src=\"include/image/exsit.jpg\">");
+				sb.append("</div>");
+				sb.append("<p class=\"p_date hidden\">2018.07.30. - 2018.08.01.</p>");
+				sb.append("<p class=\"p_title text_center guide_message\">당신의 이야기를 들려주세요.</p>");
+				sb.append("<p class=\"p_budget hidden\">&#8361 50000</p>");
+				sb.append("<p class=\"p_tags hidden\">#태그</p>");
+				
+				sb.append("</section>");
+				if(count <=8){
+					sb.append("</a>");
+				}
+				count +=1;
 			}
-			sb.append("<div class=\"img_container\">");
-			sb.append("<img class=\"main_img image_opacity\" src=\"include/image/exsit.jpg\">");
-			sb.append("</div>");
-			sb.append("<p class=\"p_date hidden\">2018.07.30. - 2018.08.01.</p>");
-			sb.append("<p class=\"p_title text_center guide_message\">당신의 이야기를 들려주세요.</p>");
-			sb.append("<p class=\"p_budget hidden\">&#8361 50000</p>");
-			sb.append("<p class=\"p_tags hidden\">#태그</p>");
-			
-			sb.append("</section>");
-			if(count <=8){
-				sb.append("</a>");
-			}
-			count +=1;
 		}
-
 		if(count==0){
 			sb.append("<p id=\"p_info\">아직 데이터가 없습니다!<br>첫번째 여행객이 되어주세요!</p>");
 		}else{

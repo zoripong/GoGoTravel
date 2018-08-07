@@ -7,12 +7,9 @@ $(document).ready(function() {
 	var footerHeight = Math.max(document.getElementById("custom_footer").clientHeight, document.getElementById("custom_footer").scrollHeight, document.getElementById("custom_footer").offsetHeight);
 	/*
 	alert("window : "+ windowHeight);
-	alert("document : "+ docHeight);
-	alert("footer : "+ footerHeight);
-	//alert("docHeight - footerHeight : "+ (parseInt(docHeight) - parseInt(footerHeight)));
-	 * */
-	
-	if(parseInt(windowHeight) < parseInt(docHeight)+100){
+	alert("docHeight - footerHeight : "+ (parseInt(docHeight)-100));
+	*/
+	if(parseInt(windowHeight) < (parseInt(docHeight))){
 		$("#custom_footer").css("position", "static");
 	}else{
 		$("#custom_footer").css("position", "absolute");	

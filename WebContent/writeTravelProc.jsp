@@ -16,6 +16,7 @@
  
  %>
 <link rel="stylesheet" type="text/css" href="include/css/writeTravel.css">
+<section id="sc_write">
 <form id="content_form"  enctype="multipart/form-data" action="writeTravelService.jsp" method="POST">
  	<input type="hidden" name="user_id" value="<%=session.getAttribute("id")%>">
  	<input type="hidden" name="board_time" value="<%= System.currentTimeMillis()%>">
@@ -54,3 +55,5 @@
 
  	<input type="submit" value="등록">
  </form>
+
+</section>

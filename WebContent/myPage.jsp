@@ -9,7 +9,7 @@
 </head>
 <body>
 	<jsp:forward page="template.jsp">	
-		<jsp:param name="HEADERTYPE" value="/include/html/header_type_03.jsp" />
+		<jsp:param name="HEADERTYPE" value="/include/html/header_type_01.jsp" />
 		<jsp:param name="CONTENTPAGE" value="myPageProc.jsp" />
 	</jsp:forward>	
 </body>

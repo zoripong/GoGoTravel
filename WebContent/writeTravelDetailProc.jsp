@@ -30,7 +30,7 @@
 
 
 %>
-
+<section id="sc_write_detail">
 <form id="serviceForm" action="writeTravelDeatilService.jsp" enctype="multipart/form-data"  method="POST">
 	<input type="hidden" name="travel_id" value="<%= travel_id%>">
 	<input type="hidden" name="route_id" value="<%= route_id %>">
@@ -38,16 +38,21 @@
 <%
 	StringBuffer sb = new StringBuffer();
 	for(int i = 0; i<routes.size(); i++){
-		sb.append("<section id=\"sc_detail_"+i+"\">");
-		sb.append(routes.get(i)+"<br>");
-		sb.append("<img id=\""+i+"\" class=\"add_button\" src=\"include/image/ic_add.svg\">");
+		sb.append("<section  id=\"sc_detail_"+i+"\">");
+		sb.append("<p class=\"p_route_item\">");
+		sb.append((i+1)+" 번째 여행지, <span class=\"span_route_point\">");
+		sb.append(routes.get(i));
+		sb.append("</span></p>");
+		sb.append("<p class=\"guide_message\">자세한 일정을 공유해주세요.</p>");
 		sb.append("</section>");
+		
+		sb.append("<i id=\""+i+"\" class=\"add_button fas fa-plus fa-3x\"></i>");
 	}
 	
 	out.println(sb.toString());
 
 
 %>
-	<input id="testBtn" type="button">
-	<input type="submit" value="제출하기" >
+		<input id="submit_button" type="submit" value="공유하기" >
 </form>
+</section>

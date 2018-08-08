@@ -208,6 +208,14 @@
 	</section>
 	<section id="sc_content_detail">
 		<%= detailSb.toString() %>
+		
+		<%
+			System.out.println("String Length : "+detailSb.toString().length()); 
+			if(detailSb.toString().length() == 0){
+				out.println("<p class=\"p_guide_message\">작성자에게 문의하세요!</p>");
+			}
+		%>
+		
 	</section>
 
 	<section id="sc_comment">
@@ -216,7 +224,7 @@
 		<hr id="comment_seperation">
 		<%
 			if(comments.size() == 0){
-				out.println("<p id=\"p_guide_message\">아직 등록된 댓글이 없네요!</p>");
+				out.println("<p class=\"p_guide_message\">아직 등록된 댓글이 없네요!</p>");
 			}
 			for(Comment comment : comments){
 				out.println("<section class=\"sc_comment_item\">");

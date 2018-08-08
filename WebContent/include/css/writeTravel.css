@@ -1,7 +1,3 @@
-img{
-	width: 50px;
-	height: 50px;
-}
 #p_logo>a{
 	color: #111111;	
 }
@@ -19,6 +15,7 @@ img{
 	width: 100%;
 	height: 40px;
 	text-align:left;
+	margin-top: 30px;
 }
 .sub_title_point{
 	width: 15px;

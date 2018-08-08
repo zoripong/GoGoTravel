@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" type="text/css" href="include/css/header_type_02.css">
+
 <script src="include/script/header_type_02.js"></script>
+<section id="sc_sub_header">
+	<p id="p_logo"><a href="main.jsp">Travel</a></p>
+</section>
 <header>
 <!--  
 	<video autoplay muted loop id="myVideo">

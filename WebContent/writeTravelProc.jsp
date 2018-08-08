@@ -75,7 +75,7 @@
 	 		</section>
 	 		<i id="main_image_clicker" class="far fa-image fa-10x"></i>
 	 		<img id="preview">
-		 	<input id="main_image" type="file" name="main_image" accept="image/*" required ><br>
+		 	<input id="main_image" type="file" name="main_image" accept="image/*" required >
 		</section> 	
 		
 	

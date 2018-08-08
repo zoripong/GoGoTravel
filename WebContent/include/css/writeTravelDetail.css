@@ -2,3 +2,88 @@ img{
 	width:50px;
 	height:50px;
 }
+#p_logo>a{
+	color: #111111;	
+}
+#sc_write_detail{
+	width: 70%;
+	margin-left: 10%;
+	padding: 90px 5%;
+	padding-top: 100px;
+	text-align: center;
+}
+.p_route_item{
+	color: #555555;
+	padding: 0 10px;
+	border-left: 10px solid #fdc741;
+	text-align: left;
+}
+.span_route_point{
+	color: #111111;
+	font-size: 15pt;
+	font-weight: 500;
+}
+
+.guide_message{
+	width: 100%;
+	color: #333333;
+	text-align: center;
+	font-size: 15pt;
+	margin: 15px 0;
+}
+.ta_text_detail{
+	width: 95%;
+	height: 200px;
+	border-radius: 30px;
+	padding: 30px;
+	margin: 5px 0;
+	border: 0.5px solid #acacac;
+}
+.image_clicker{
+	width: 100%;
+	text-align: center;
+}
+.add_button{
+	color: #666666;
+	cursor:pointer;
+	transition: .5s ease;		
+}
+.add_button:hover{
+	color: #555555;
+}
+.image_clicker>i{
+	color: #eeeeee;
+	cursor:pointer;
+	transition: .5s ease;		
+}
+.image_clicker>i:hover{
+	color: #dddddd;
+}
+.preview{
+	margin: 5px;	
+	cursor:pointer;
+	visibility: hidden;
+}
+.input_image_file{
+	display:none;
+}
+#serviceForm{
+	position: relative;
+}
+
+#submit_button{
+	width: 120px;
+	height: 40px;
+	border: 2px solid #fdc741;
+	border-radius: 40px;
+	background-color: rgba(0, 0, 0, 0);
+	text-align: center;
+	transition: .5s ease;	
+	display:block;
+	position: absolute;
+	right:0;
+}
+#submit_button:hover{
+	color: #ffffff;
+	background-color: #fdc741;
+}

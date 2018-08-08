@@ -103,9 +103,8 @@
 				sb.append("<p class=\"p_tags hidden\">#태그</p>");
 				
 				sb.append("</section>");
-				if(count <=8){
-					sb.append("</a>");
-				}
+				sb.append("</a>");
+
 				count +=1;
 			}
 		}
@@ -124,8 +123,14 @@
 <section id="sc_travel_list">
 <%= sb.toString() %>
 </section>
+
+<% if(session.getAttribute("id") != null){	%>
 <section id="sc_float_btn">
 	<a href="writeTravel.jsp">
 	    <img id="float_btn" src="include/image/ic_floating_add.svg" alt="">
 	</a>
-</section>
+</section>	
+	<%
+	}
+%>
+

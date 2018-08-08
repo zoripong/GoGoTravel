@@ -1,14 +1,17 @@
 @import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+
 @font-face {
     font-family: myFirstFont;
     src: url('../font/Allura-Regular.otf');
 }
+
 header{
 	width:100%;
 	height:500px;
 	overflow:hidden;
 	position: relative;
 }
+
 #myVideo{
 	z-index : -100;
 	width:100%;
@@ -17,25 +20,25 @@ header{
 	top:50%;
 	transform    : translate(0%, -50%);  
 }
+
 #sc_user{
 	width: 100%;
 	text-align: right;
 	padding:5px 0px;
 	position:relative;
 }
+
 #sp_user{
 	margin:30px;
 	margin-left : 10px;
-	
 }
+
 #img_home{
 	width:25px;
 	height:25px;
 	position:absolute;
 	top:50%;
-	
 	transform    : translate(0%, -50%);  
-	
 }
 
 #sp_user{
@@ -48,21 +51,20 @@ header{
 	color: #111111;
 	text-decoration: none;
 }
+
 #home_link:hover{
 	text-decoration: underline;	
 }
 
 #home_link:visitied{
-	color: #000000;
-	
+	color: #000000;	
 }
 
 #sc_search{
 	width: 100%;
 	height: 50px;
 	line-height: 50px;
-	text-align :center;
-	
+	text-align :center;	
 }
 
 #sc_search_container{
@@ -75,12 +77,12 @@ header{
 	display:inline-block;
 	margin:15px;
 	line-height:40px;
-	
 }
 
 #sc_search_container:hover{
 	border: 0.5px solid #eeeeee;
 }
+
 #ic_search_bar{
 	color:#ffffff;
 	border : 0px solid #ffffff;
@@ -90,8 +92,6 @@ header{
 	background-color : rgba(255, 255, 255, 0);
 	text-align:center;
 }
-
-
 #ic_search_btn{
 	width:20px;
 	height:20px;

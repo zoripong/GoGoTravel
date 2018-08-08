@@ -160,9 +160,11 @@ INSERT INTO wish_travel VALUES ('test001', 1, 50000);
 # 게시글 detail 가져오기
 SELECT * FROM travel WHERE travel_id = ;
 
-SELECT route.travel_id as travel_id, route.route_id as route_id, route_index, loc, detail_index, img_src, content
+SELECT route_index, loc, detail_index, travel.user_id, img_src, content 
 FROM route
-RIGHT JOIN route_detail ON route.travel_id = route_detail.travel_id AND route.route_id = route_detail.route_id WHERE route.travel_id = 2
+RIGHT JOIN route_detail ON route.travel_id = route_detail.travel_id AND route.route_id = route_detail.route_id
+JOIN travel ON travel.travel_id = route.travel_id
+WHERE route.travel_id = 46
 ORDER BY route_index, detail_index;
 
 SELECT * FROM travel_tag WHERE travel_id = ;

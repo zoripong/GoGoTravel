@@ -1,38 +1,37 @@
 package model;
 
-public class Detail {
-	int travelId;
-	int routeId;
-	int detailIndex;
-	String imageSrc;
-	String content;
-	
-	public Detail(int travelId, int routeId, int detailIndex, String imageSrc, String content) {
+import java.util.ArrayList;
+
+public class Route {
+	private int route_index;
+	private String loc;
+	private ArrayList<RouteDetail> routeDetails;
+	public Route(int route_index, String loc) {
 		super();
-		this.travelId = travelId;
-		this.routeId = routeId;
-		this.detailIndex = detailIndex;
-		this.imageSrc = imageSrc;
-		this.content = content;
+		this.route_index = route_index;
+		this.loc = loc;
+		this.routeDetails = new ArrayList<RouteDetail>();
 	}
 	
-	public int getTravelId() {
-		return travelId;
+	
+	public int getRoute_index() {
+		return route_index;
 	}
-	public int getRouteId() {
-		return routeId;
+
+	public String getLoc() {
+		return loc;
 	}
-	public int getDetailIndex() {
-		return detailIndex;
+
+	public ArrayList<RouteDetail> getRouteDetails() {
+		return routeDetails;
 	}
-	public String getImageSrc() {
-		return imageSrc;
-	}
-	public String getContent() {
-		return content;
+
+	public void addDetail(int index, RouteDetail routeDetail) {
+		routeDetails.add(index, routeDetail);
 	}
 	
 	public String toString() {
-		return travelId+"/"+routeId+"/"+detailIndex+"/"+imageSrc+"/"+content+"\n";
+		return route_index+"/"+loc+"/"+routeDetails.toString()+"\n";
 	}
+	
 }

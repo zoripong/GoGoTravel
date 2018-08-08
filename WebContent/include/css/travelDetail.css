@@ -42,8 +42,7 @@
 	width:10px;
 	height: 100%;
 	display: inline-block;
-	background-color: #000000;
-	opacity: 0.5;
+	background-color: #fdc741;
 }
 .p_overview_sub_title{
 	padding: 0px 10px;
@@ -97,7 +96,7 @@
 	width: 5px;
 	height: 30px;
 	display: inline-block;
-	background-color : gray;
+	background-color : #fdb904;
 	margin-right: 5px;
 }
 .p_loc{

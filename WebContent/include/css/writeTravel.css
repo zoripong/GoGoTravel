@@ -1,7 +1,125 @@
 img{
-	width:50px;
-	height:50px;
+	width: 50px;
+	height: 50px;
+}
+#p_logo>a{
+	color: #111111;	
 }
 #sc_write{
-	margin-top:70px;
+	width: 70%;
+	margin-left: 10%;
+	padding: 90px 5%;
+	padding-top:70px;
+	text-align:right;
+}
+#sc_write>form>section{
+	width: 100%;
+}
+.sub_title{
+	width: 100%;
+	height: 40px;
+	text-align:left;
+}
+.sub_title_point{
+	width: 15px;
+	height: 40px;
+	background-color: #fdc741;
+	display: inline-block;
+}
+.sub_title>p{
+	color: #111111;
+	display: inline-block;
+	vertical-align: top;
+	line-height: 40px;
+	margin-left: 10px;
+	font-size: 13pt;
+	font-weight: 500;
+}
+#sc_detail{
+	text-align:center;
+}
+#input_title, #input_start_date, #input_end_date, #input_budget, #input_tag{
+	width: 100%;
+	height:40px;
+	border:none;
+	border-bottom: 1px solid #acacac;
+	margin: 15px 0;
+	transition: .2s ease;	
+}
+#input_title:hover, #input_start_date:hover, #input_end_date:hover, #input_budget:hover, #input_tag:hover, .input_route:hover{
+	border-bottom: 1px solid #111111;
+}
+#input_start_date, #input_end_date{
+	width : 25%;
+	display: inline-block;
+	text-align: center;
+}
+#sc_route{
+	text-align: center;
+}
+#sc_route>i{
+	color: #eeeeee;
+	transition: .5s ease;	
+	margin-bottom: 15px;
+}
+#sc_route>i:hover{
+	color: #dddddd;
+}
+#sc_route_list{
+	padding: 15px 0;
+}
+.sc_route_item{
+	width: 100%;
+	text-align: center;
+}
+.sc_route_item>p{
+	color: #555555;	
+	line-height: 30px;
+	margin:0 15px;
+	display: inline-block;
+}
+.input_route{
+	width: 50%;
+	height: 30px;
+	display: inline-block;
+	text-align: center;
+	border: none;
+	border-bottom: 1px solid #acacac;
+	margin: 10px 0;
+	transition: .2s ease;	
+}
+#sc_main_image{
+	font-size: 24pt;
+	text-align:center;
+}
+#sc_main_image>i{
+	cursor:pointer;
+	transition: .5s ease;	
+	color: #eeeeee;
+}
+#sc_main_image>i:hover{
+	color: #dddddd;
+}
+#main_image{
+	display:none;
+}	
+#preview{
+	margin: 20px;	
+	cursor:pointer;
+	visibility: hidden;
+}
+#submit_button{
+	width: 120px;
+	height: 40px;
+	border: 2px solid #fdc741;
+	border-radius: 40px;
+	background-color: rgba(0, 0, 0, 0);
+	text-align: center;
+	transition: .5s ease;	
+
+}
+#submit_button:hover{
+	color: #ffffff;
+	background-color: #fdc741;
+	
 }

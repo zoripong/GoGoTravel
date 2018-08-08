@@ -20,7 +20,6 @@ nav{
 	height:50px;
 	line-height:50px;
 	margin-left: 20%;
-	border-bottom: 1px solid black;
 }
 #sc_user_info{
 	position : absolute;
@@ -30,27 +29,27 @@ nav{
 }
 #p_user_id{
 	width:100%;	
-	font-size: 24pt;
+	font-size: 18pt;
 	padding-left:20px;
-	line-height:70px;
+	line-height:50px;
 	vertical-align:middle;	
 }
 #p_user_level{
 	width:100%;	
 	font-size: 21pt;
-	line-height:70px;
+	line-height:50px;
 	vertical-align:middle;
 }
 .sp_point{
 	font-weight:bolder;
 }
 .menu_item{
-	width:15%;
-	margin:0 17%;
+	margin: 0;
+	padding: 0;
+	width:49%;
 	display:inline-block;
 	text-align : center;
 	vertical-align: middle;
-	border-bottom : 3px solid red;
 }
 .menu_item>a{
 	color:black;
@@ -60,6 +59,14 @@ nav{
 }
 .menu_item>a:hover{
 	font-weight:bolder;
+}
+#menu_1{
+	border: 1px solid #cccccc;
+	border-bottom: none;	
+}
+#menu_2{
+	border: none;
+	border-bottom: 1px solid #cccccc;
 }
 #sc_list{
 	width: 60%;
@@ -74,8 +81,8 @@ nav{
 	padding: 10px;
 	border-bottom : 0.5px solid #dddddd;
 }
-#sc_item:first-child{
-	border-top: 0.5px solid #dddddd;
+#sc_item:last-child{
+	border: none;
 }
 #sc_photo, #sc_method, #sc_wish_method{
 	width: 20%;

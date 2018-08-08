@@ -9,7 +9,7 @@ $(document).ready(function() {
 	alert("window : "+ windowHeight);
 	alert("docHeight - footerHeight : "+ (parseInt(docHeight)-100));
 	*/
-	if(parseInt(windowHeight) < (parseInt(docHeight))){
+	if(parseInt(windowHeight) < (parseInt(docHeight) + (parseInt(footerHeight)/4))){
 		$("#custom_footer").css("position", "static");
 	}else{
 		$("#custom_footer").css("position", "absolute");	

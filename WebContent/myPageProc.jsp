@@ -3,7 +3,10 @@
 <%@page import="DB.DBExecutor"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<link rel="stylesheet" type="text/css" href="include/css/myPage.css">    
+<link rel="stylesheet" type="text/css" href="include/css/myPage.css"> 
+<%
+%>
+<script src="include/script/myPage.js"></script>   
 <section id="sc_sub_header">
 <section id="sc_user_info">
 <%
@@ -30,10 +33,10 @@
 </section>
 </section>
 <nav>
-	<section class="menu_item">
+	<section id="menu_1" class="menu_item">
 	<a href="myPage.jsp?tab=1">나의 여행</a>
 	</section>
-	<section class="menu_item">
+	<section id="menu_2" class="menu_item">
 	<a href="myPage.jsp?tab=2">가자 여행</a>
 	</section>
 </nav>
@@ -42,15 +45,26 @@
 	String tabRe[] = {"내 여행 삭제", "가자 여행 삭제"};
 	String isSuccess = request.getParameter("isSuccess");
 	
-	int tab = Integer.parseInt(request.getParameter("tab"));
+
 	String user_id = (String)session.getAttribute("id");
 	DBExecutor db = new DBExecutor(DBConnector.getMySqlConnection());
-	
+	int tab = Integer.parseInt(request.getParameter("tab"));
+	out.println("<script>var tab = "+tab+";</script>");
+
 	sb = new StringBuffer();
 	if(tab == 1){
 		// 내가 작성한 글 목록 가져오기
 		ResultSet rs = db.execToSet("select * from travel where user_id = '"+user_id+"' order by board_time desc;");
 		while(rs.next()){
+			DBExecutor subDb = new DBExecutor(DBConnector.getMySqlConnection());
+			ResultSet routeSet = subDb.execToSet("select * from route where travel_id = "+rs.getInt("travel_id")+";");
+			StringBuffer routeBuffer = new StringBuffer();
+			while(routeSet.next()){
+				routeBuffer.append(routeSet.getString("loc"));
+				if(!routeSet.last()){
+					routeBuffer.append("-");
+				}
+			}
 			sb.append("<section id=\"sc_item\">");
 			
 			sb.append("<section id=\"sc_photo\">");
@@ -68,7 +82,7 @@
 			sb.append(rs.getString("title"));
 			sb.append("</p>");
 			sb.append("<p id=\"p_loc\">");
-			sb.append("loc");
+			sb.append(routeBuffer.toString());
 			sb.append("</p>");
 			sb.append("</a>");
 			sb.append("</section>");
@@ -97,7 +111,16 @@
 				
 		ResultSet rs = db.execToSet(sql);
 		while(rs.next()){
-sb.append("<section id=\"sc_item\">");
+			DBExecutor subDb = new DBExecutor(DBConnector.getMySqlConnection());
+			ResultSet routeSet = subDb.execToSet("select * from route where travel_id = "+rs.getInt("travel_id")+";");
+			StringBuffer routeBuffer = new StringBuffer();
+			while(routeSet.next()){
+				routeBuffer.append(routeSet.getString("loc"));
+				if(!routeSet.last()){
+					routeBuffer.append("-");
+				}
+			}
+			sb.append("<section id=\"sc_item\">");
 			
 			sb.append("<section id=\"sc_photo\">");
 			//sb.append("이미지");
@@ -114,7 +137,7 @@ sb.append("<section id=\"sc_item\">");
 			sb.append(rs.getString("title"));
 			sb.append("</p>");
 			sb.append("<p id=\"p_loc\">");
-			sb.append("loc");
+			sb.append(routeBuffer.toString());
 			sb.append("</p>");
 			sb.append("</a>");
 			sb.append("</section>");

@@ -1,9 +1,6 @@
-[todo]
-- main.jsp 검색기능
+[to do]
 - route 추가한 input text 삭제
-- update travel 
-- 게시글 올릴 경우 레벨업
-- wish 하면 숫자 누적
+- update travel
 - wish 하는 시간 저장 후 개월 수 계산
 
 [done]
@@ -12,3 +9,6 @@
 - travel detail view
 - user page
 - write about travel view (detail service만 남았다.)
+- main.jsp 검색기능
+- 게시글 올릴 경우 레벨업
+- wish 하면 숫자 누적

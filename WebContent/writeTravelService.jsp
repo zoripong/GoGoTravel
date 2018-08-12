@@ -40,7 +40,7 @@
 	String main_image = multi.getParameter("hidden_main_img");
 	
 	int travel_id = -1;
-	if(db.exec("INSERT INTO travel VALUES(null, '"+user_id+"', '"+title+"', '"+board_time+"', '"+start_date+"', '"+end_date+"', "+budget+", '"+main_image+"' );")){
+	if(db.exec("INSERT INTO travel VALUES(null, '"+user_id+"', '"+title+"', '"+board_time+"', '"+start_date+"', '"+end_date+"', "+budget+", '"+main_image+"', 0 );")){
 		ResultSet rs = db.execToSet("SELECT * FROM travel WHERE user_id = '"+user_id+"' AND board_time = '"+board_time+"';");
 		if(rs.next()){
 			travel_id = rs.getInt("travel_id");

@@ -120,3 +120,15 @@
 	background-color: #fdc741;
 	
 }
+
+#delete_none{
+	visibility: hidden;
+}
+.ic_delete{
+	color: #eeeeee;
+	margin-left : 15px;
+	visibility: hidden;
+}
+.ic_delete:hover{
+	color: #dddddd;	
+}

@@ -88,7 +88,8 @@
 			sb.append("</section>");
 			
 			sb.append("<section id=\"sc_method\">");
-			sb.append("<a href=\"writeTravel.jsp?travel_id="+rs.getString("travel_id")+"\">");
+//			sb.append("<a href=\"writeTravel.jsp?travel_id="+rs.getString("travel_id")+"\">");
+			sb.append("<a href=\"#\">");
 			sb.append("<i class=\"fas fa-pen-nib\"></i>");
 			sb.append("</a>");
 			sb.append("<a href=\"deleteTravelService.jsp?travel_id="+rs.getString("travel_id")+"\">");

@@ -157,6 +157,14 @@ INSERT INTO wish_travel VALUES ('test001', 1, 50000);
 # 2) title에 포함
 # 3) loc에 포함
 
+SELECT DISTINCT travel.travel_id as travel_id, user_id, title, board_time, start_date, end_date, budget, main_img FROM travel 
+JOIN route ON travel.travel_id = route.travel_id 
+JOIN travel_tag ON travel.travel_id = travel_tag.travel_id
+WHERE tag LIKE '%사%'
+OR loc LIKE '%쿄%'
+OR title LIKE '%도%';
+		
+
 # 게시글 detail 가져오기
 SELECT * FROM travel WHERE travel_id = ;
 
@@ -200,3 +208,17 @@ DELETE FROM wish_travel;
 DELETE FROM travel_tag;
 DELETE FROM travel;
 DELETE FROM user;
+
+#detail까지 작성한 travel 개수
+SELECT DISTINCT travel.travel_id FROM travel 
+JOIN route_detail ON travel.travel_id = route_detail.travel_id
+WHERE travel.user_id like 'test001';
+
+#레벨 업
+UPDATE user SET level=1 WHERE user_id LIKE 'test001';
+
+#travel 컬럼 추가
+alter table travel add wish_count int(11) not null default 0; 
+
+#wish_count 증가
+UPDATE travel SET wish_count=1 WHERE travel_id = 1;

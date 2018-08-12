@@ -1,3 +1,4 @@
+<%@page import="java.sql.ResultSet"%>
 <%@page import="com.oreilly.servlet.multipart.DefaultFileRenamePolicy"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="com.oreilly.servlet.MultipartRequest"%>
@@ -71,6 +72,44 @@
 			}
 		}
 	}
+	
+	// level up 
+	
+	
+	
+	
+	String sql = "SELECT DISTINCT travel.travel_id FROM travel "
+				+ "JOIN route_detail ON travel.travel_id = route_detail.travel_id "
+				+ "WHERE travel.user_id like '"+(String)session.getAttribute("id")+"';";
+				
+				
+	ResultSet rs = db.execToSet(sql);
+	
+	int rowCount = 0;
+	if (rs.last()) {
+		rowCount = rs.getRow();
+	}
+	
+	/*
+		0 : 0~4,
+		1 : 5~8,
+		2 : 9~12,
+		3 : 13~16,
+		4 : 17~
+	*/
+	int level = (rowCount-1)/4;
+	if(level>4){
+		level = 4;
+	}
+	
+	sql = "UPDATE user SET level="+level+" WHERE user_id LIKE '"+(String)session.getAttribute("id")+"';";
+	db.exec(sql);
+	
+	
+	
+
+	
+	
 	%>
 <jsp:forward page="myPage.jsp?tab=1"/>
 

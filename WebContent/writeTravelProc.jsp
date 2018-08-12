@@ -63,6 +63,7 @@
 		 	<section id="sc_route_list">
 			 	<section class="sc_route_item">
 				 	<p>#1</p><input class="input_route" type="text" name="route" placeholder="여행지를 적어주세요." required>
+					<i id="delete_none" class="ic_delete fas fa-minus"></i>
 			 	</section>
 		 	</section>
 		 	<i id="add_route_button" class="fas fa-plus fa-3x"></i>
